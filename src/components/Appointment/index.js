@@ -1,9 +1,9 @@
 import React from "react";
 import classNames from 'classnames';
-import 'components/styles.scss';
+import './styles.scss';
 
 
-export default function Appointment ({}) {
+export default function Appointment () {
 
 
   return (

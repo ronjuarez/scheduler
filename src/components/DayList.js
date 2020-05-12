@@ -21,5 +21,5 @@ export default function DayList({
       <ul>
         { dayListItems }
       </ul>
-   );
- }
+    );
+  }
