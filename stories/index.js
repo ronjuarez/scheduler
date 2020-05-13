@@ -11,7 +11,12 @@ import DayList from "components/DayList";
 import InterviewerListItem from "components/InterviewerList";
 import InterviewerList from "components/InterviewerListItem";
 import Appointment from "components/Appointment/index.js";
-
+import Header from "components/Appointment/Header.js";
+import Empty from "components/Appointment/Empty.js";
+import Show from "components/Appointment/Show.js";
+import Confirm from "components/Appointment/Confirm.js";
+import Status from "components/Appointment/Status.js";
+import Error from "components/Appointment/Error.js";
 
 storiesOf("Button", module)
   .addParameters({
@@ -131,9 +136,20 @@ storiesOf("DayListItem", module) //Initiates Storybook and registers our DayList
           />
         ));
       
-      storiesOf('Appointment', module)
-      .addParameters({
-        backgrounds: {name:"white", value: "#fff", default: true}
-      })
-      .add("Appointment", () => <Appointment/>)
-      .add("Appointment with Time", () => <Appointment time="12pm" />);
+
+
+
+      storiesOf("Appointment", module)
+        .addParameters({
+          backgrounds: [{name:"white", value: "#fff", default: true}]
+        })
+        .add("Appointment", () => <Appointment/>)
+        .add("Appointment with Time", () => <Appointment time="12pm" />)
+        .add("Header", () => <Header time="12pm" />)
+        .add("Empty", () => <Empty  onAdd={action("onAdd")} />)
+        .add("Show on Edit", () => <Show onEdit={action("onEdit")} interviewer={interviewers[0]} />)
+        .add("Show on Delete", () => <Show onDelete={action("onDelete")} interviewer={interviewers[0]} />)
+        .add("Confirmed", () => <Confirm onConfirm={action("onConfirm")} message="Delete the appointment?" />)
+        .add("Confirm on Cancel", () => <Confirm onCancel={action("onCancel")} message="Delete the appointment?" />)
+        .add("Status", () => <Status message="Deleting..." />)
+        .add("Error", () => <Error onClose={action("onClose")} message="Could not delete the appointment." />)
