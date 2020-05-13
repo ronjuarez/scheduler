@@ -8,7 +8,7 @@ export default function Empty ({
   return(
     <main className="appointment__add">
       <img
-        onClick={onAdd()}
+        onClick={() => onAdd()}
         className="appointment__add-button"
         src="images/add.png"
         alt="Add"
