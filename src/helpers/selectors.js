@@ -5,3 +5,8 @@ export function getAppointmentsForDay(state, day) {
   
   return sortedApp;
 }
+
+export function getInterview(state, interview) {
+  const intDetails = !interview ? null : { student: interview.student, interviewer: state.interviewers[interview.interviewer] };
+  return intDetails;
+};

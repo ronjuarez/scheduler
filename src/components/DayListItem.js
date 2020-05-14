@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import 'components/DayListItem.scss';
 
 export default function DayListItem({ 
+  id,
   name,
   spots,
   selected,
@@ -21,7 +22,8 @@ export default function DayListItem({
     return spot === 1 ?  `${spot} ${result}` : `${spot} ${pluralResult}`
   }
   return (
-    <li 
+    <li
+      key={id} 
       onClick={() => {setDay(name)}} 
       className={dayClass}>
       <h2 className="text--regular">{ name }</h2> 
