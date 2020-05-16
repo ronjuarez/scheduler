@@ -13,10 +13,10 @@ return (
       {message}</h1>
     <section className="appointment__actions">
       <Button danger 
-      onClick={() => onCancel('#')}>
+      onClick={() => onCancel()}>
         Cancel</Button>
       <Button danger 
-      onClick={() => onConfirm('#')}>
+      onClick={() => onConfirm()}>
         Confirm</Button>
     </section>
   </main>
