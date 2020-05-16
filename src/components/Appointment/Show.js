@@ -21,13 +21,13 @@ export default function Show ({
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <img
-            onClick={() => onEdit(interviewer.id)}
+            onClick={() => onEdit()}
             className="appointment__actions-button"
             src="images/edit.png"
             alt="Edit"
           />
           <img
-            onClick={() => onDelete(interviewer.id)}
+            onClick={() => onDelete()}
             className="appointment__actions-button"
             src="images/trash.png"
             alt="Delete"
