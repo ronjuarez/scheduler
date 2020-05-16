@@ -17,6 +17,8 @@ export default function Form({
   const [nameState, setName] = useState(name || "");
   const [intState, setInterviewer] = useState(interviewer || null);       
 
+
+
   const reset = () => {
     setName(""); 
     setInterviewer(null);
@@ -27,6 +29,8 @@ export default function Form({
     onCancel();
   }
 
+
+  
 
   return (
     <main className="appointment__card appointment__card--create">
@@ -42,15 +46,16 @@ export default function Form({
             />
         </form>
         <InterviewerList 
-        interviewers={interviewers} 
-        interviewer={intState} 
-        onChange={setInterviewer} 
+          interviewers={interviewers} 
+          interviewer={intState} 
+          setInterviewer={setInterviewer}
+          onChange={(event) => setInterviewer(event.target.value)} 
         />
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
           <Button danger onClick={() => cancel()}>Cancel</Button>
-          <Button confirm onClick={() => onSave()}>Save</Button>
+          <Button confirm onClick={() => onSave(nameState, intState)}>Save</Button>
         </section>
       </section>
     </main>
