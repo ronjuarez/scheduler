@@ -48,7 +48,7 @@ export default function Appointment ({
 
     bookInterview(id, interview)
     .then(() => {
-      transition(SHOW, true);
+      transition(SHOW);
     })
     .catch(() =>{
       transition(ERROR_SAVE, true)
@@ -57,11 +57,11 @@ export default function Appointment ({
 
 
   function del() {
-    transition(DELETING);
+    transition(DELETING, true);
     
     cancelInterview(id)
     .then(() => {
-      transition(EMPTY, true);
+      transition(EMPTY);
     })
     .catch(() =>{
       transition(ERROR_DELETE, true)
@@ -83,8 +83,8 @@ export default function Appointment ({
         <Show
           name={interview.student}
           interviewer={interview.interviewer}
-          onDelete={() => transition(CONFIRM, true)} 
-          onEdit={() => transition(EDIT, true)} />}
+          onDelete={() => transition(CONFIRM)} 
+          onEdit={() => transition(EDIT)} />}
       {mode === SAVING &&
         <Status 
           message="Saving..."/>}
@@ -103,7 +103,7 @@ export default function Appointment ({
           interviewer={interview.interviewer.id}
           interviewers={interviewers}
           onSave={save}
-          onCancel={() => transition(SHOW, true)} 
+          onCancel={() => back()} 
         /> }
         {mode === ERROR_SAVE &&
           <Error 
@@ -113,7 +113,7 @@ export default function Appointment ({
         {mode === ERROR_DELETE &&
           <Error
             message={"Whoops! There was an error deleting your appointment!"}
-            onClose={() => transition(SHOW, true)}
+            onClose={() => back()}
           />}
     </article>
   )
