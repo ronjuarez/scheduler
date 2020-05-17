@@ -17,8 +17,10 @@ const SHOW = "SHOW";
 const CREATE = "CREATE";
 const SAVING = "SAVING";
 const CONFIRM = "CONFIRM";
-const DELETING = "DELETING"
-const EDIT = "EDIT"
+const DELETING = "DELETING";
+const EDIT = "EDIT";
+const ERROR_DELETE = "ERROR_DELETE";
+const ERROR_SAVE = "ERROR_SAVE";
 
 
 
@@ -96,6 +98,16 @@ export default function Appointment ({
           onSave={save}
           onCancel={() => transition(SHOW, true)} 
         /> }
+        {mode === ERROR_SAVE &&
+          <Error 
+            message={"Whoops! There was an error saving your appointment!"}
+            onClose={() => back()}
+          />}
+        {mode === ERROR_DELETE &&
+          <Error
+            message={"Whoops! There was an error deleting your appointment!"}
+            onClose={() => back()}
+          />}
     </article>
   )
 }

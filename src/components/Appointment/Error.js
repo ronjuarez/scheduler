@@ -4,7 +4,7 @@ import React from "react";
 
 export default function Error ({
   message,
-  // onClose,
+  onClose,
 }) {
     return (
       <main className="appointment__card appointment__card--error">
@@ -13,7 +13,7 @@ export default function Error ({
           <h3 className="text--light">{message}</h3>
         </section>
         <img
-          // onClick={() => onClose("#")}
+          onClick={() => onClose()}
           className="appointment__error-close"
           src="images/close.png"
           alt="Close"
