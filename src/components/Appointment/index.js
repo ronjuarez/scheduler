@@ -6,11 +6,12 @@ import Show from "./Show.js"
 import Empty from "./Empty.js"
 import Form from "./Form.js"
 import Status from "./Status.js"
-import confirm from "./Confirm.js"
+import Confirm from "./Confirm.js"
+import Error from "./Error.js"
 import './styles.scss';
 
 import useVisualMode from "hooks/useVisualMode";
-import Confirm from "./Confirm.js";
+
 
 const EMPTY = "EMPTY";
 const SHOW = "SHOW";
@@ -49,6 +50,9 @@ export default function Appointment ({
     .then(() => {
       transition(SHOW, true);
     })
+    .catch(() =>{
+      transition(ERROR_SAVE, true)
+    })
   };
 
 
@@ -58,6 +62,9 @@ export default function Appointment ({
     cancelInterview(id)
     .then(() => {
       transition(EMPTY, true);
+    })
+    .catch(() =>{
+      transition(ERROR_DELETE, true)
     })
   }
 
@@ -106,7 +113,7 @@ export default function Appointment ({
         {mode === ERROR_DELETE &&
           <Error
             message={"Whoops! There was an error deleting your appointment!"}
-            onClose={() => back()}
+            onClose={() => transition(SHOW, true)}
           />}
     </article>
   )
