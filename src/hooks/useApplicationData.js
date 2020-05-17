@@ -11,8 +11,16 @@ export default function useApplicationData() {
     interviewers: {}
   });
 
+  function spotsRemaining (id) {
+    let totalDays = state.days;
+    for (let day of totalDays) {
+      let { spots } = day;
+      id === day.appointments.id ? ++spots : --spots; 
+    }
+  };
 
   function bookInterview(id, interview) {
+    spotsRemaining(id)
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -32,6 +40,7 @@ export default function useApplicationData() {
     }
 
     function cancelInterview(id) {
+      spotsRemaining(id)      
       const appointment = {
         ...state.appointments[id],
         interview: null
