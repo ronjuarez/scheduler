@@ -11,37 +11,6 @@ export default function useApplicationData() {
     interviewers: {}
   });
 
-  function spotsRemaining (state, appointments) {
-    let dayIndex;
-          
-    for (let match in state.days){
-      if (state.day === state.days[match].name){
-        dayIndex = match
-        break;
-      } 
-    }
-
-    let day = {...state.days[dayIndex]}
-    
-    let totalInterviews = 0
-
-    for(let app_id of day.appointments) {
-      if(appointments[app_id].interview){
-        totalInterviews++
-      }
-    }
-    
-    let spotsRemaining = 5 - totalInterviews;
-
-    let updatedDays = [...state.days];
-
-    day.spots = spotsRemaining;
-
-    updatedDays[dayIndex] = day;
-
-    return updatedDays
-  }
-
   function bookInterview(id, interview) {
 
     const appointment = {
@@ -58,10 +27,10 @@ export default function useApplicationData() {
         setState({
           ...state,
           appointments,
-          days : spotsRemaining(state, appointments)
+          days 
         })
       })
-    }
+    };
 
     function cancelInterview(id) {    
       const appointment = {
@@ -78,9 +47,9 @@ export default function useApplicationData() {
         setState({
           ...state,
           appointments,
-          days : spotsRemaining(state, appointments)
+          days 
         })
-       })
+      })
     };
 
   const setDay = day => setState({ ...state, day });
