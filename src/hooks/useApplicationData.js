@@ -11,16 +11,39 @@ export default function useApplicationData() {
     interviewers: {}
   });
 
-  function spotsRemaining (id) {
-    let totalDays = state.days;
-    for (let day of totalDays) {
-      let { spots } = day;
-      id === day.appointments.id ? ++spots : --spots; 
+  function spotsRemaining (state, appointments) {
+    let dayIndex;
+          
+    for (let match in state.days){
+      if (state.day === state.days[match].name){
+        dayIndex = match
+        break;
+      } 
     }
-  };
+
+    let day = {...state.days[dayIndex]}
+    
+    let totalInterviews = 0
+
+    for(let app_id of day.appointments) {
+      if(appointments[app_id].interview){
+        totalInterviews++
+      }
+    }
+    
+    let spotsRemaining = 5 - totalInterviews;
+
+    let updatedDays = [...state.days];
+
+    day.spots = spotsRemaining;
+
+    updatedDays[dayIndex] = day;
+
+    return updatedDays
+  }
 
   function bookInterview(id, interview) {
-    spotsRemaining(id)
+
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -31,16 +54,16 @@ export default function useApplicationData() {
     };
     return axios
      .put(`http://localhost:8001/api/appointments/${id}`, appointment)
-     .then(() => {
+     .then(() => { 
         setState({
           ...state,
-          appointments
+          appointments,
+          days : spotsRemaining(state, appointments)
         })
       })
     }
 
-    function cancelInterview(id) {
-      spotsRemaining(id)      
+    function cancelInterview(id) {    
       const appointment = {
         ...state.appointments[id],
         interview: null
@@ -54,7 +77,8 @@ export default function useApplicationData() {
        .then(() => {
         setState({
           ...state,
-          appointments
+          appointments,
+          days : spotsRemaining(state, appointments)
         })
        })
     };
@@ -74,7 +98,7 @@ export default function useApplicationData() {
             url: `http://localhost:8001/api/interviewers`}),
     ])
       .then((dbList) => {
-        setState({ days: dbList[0].data, appointments: dbList[1].data, interviewers: dbList[2].data })
+        setState({ ...state, days: dbList[0].data, appointments: dbList[1].data, interviewers: dbList[2].data })
       })
       .catch((error) => {
         console.log(error)
@@ -84,3 +108,4 @@ export default function useApplicationData() {
   return { state, setDay, bookInterview, cancelInterview }
 
 }
+

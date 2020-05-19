@@ -12,6 +12,7 @@ export default function DayList({
     const dayListItems = days.map(dayItem => (
       <DayListItem 
         id={dayItem.id}
+        key={dayItem.id}
         name={dayItem.name} 
         spots={dayItem.spots} 
         selected={dayItem.name === day}
