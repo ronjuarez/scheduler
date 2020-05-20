@@ -16,7 +16,7 @@ export default function Form({
 
   const [nameState, setName] = useState(name || "");
   const [intState, setInterviewer] = useState(interviewer || null);       
-
+  const [errState, setError] = useState("")
 
 
   const reset = () => {
@@ -29,6 +29,15 @@ export default function Form({
     onCancel();
   }
 
+  const validate = () => {
+    if (nameState === "") {
+      setError("Please enter your name!");
+      return;
+    }
+
+    setError("");
+    onSave(nameState, intState)
+  }
 
   
 
@@ -43,8 +52,12 @@ export default function Form({
             onChange={event => setName(event.target.value)}
             type="text"
             placeholder="Enter Student Name"
+            data-testid="student-name-input"
             />
         </form>
+        <section className="appointment__validation">
+          {errState}
+        </section>
         <InterviewerList 
           interviewers={interviewers} 
           interviewer={intState} 
@@ -54,8 +67,8 @@ export default function Form({
       </section>
       <section className="appointment__card-right">
         <section className="appointment__actions">
-          <Button danger onClick={() => cancel()}>Cancel</Button>
-          <Button confirm onClick={() => onSave(nameState, intState)}>Save</Button>
+          <Button danger onClick={cancel}>Cancel</Button>
+          <Button confirm onClick={validate}>Save</Button>
         </section>
       </section>
     </main>

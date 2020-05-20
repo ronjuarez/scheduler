@@ -1,13 +1,13 @@
 import React from "react";
 
 
-import Header from "./Header.js"
-import Show from "./Show.js"
-import Empty from "./Empty.js"
-import Form from "./Form.js"
-import Status from "./Status.js"
-import Confirm from "./Confirm.js"
-import Error from "./Error.js"
+import Header from "./Header.js";
+import Show from "./Show.js";
+import Empty from "./Empty.js";
+import Form from "./Form.js";
+import Status from "./Status.js";
+import Confirm from "./Confirm.js";
+import Error from "./Error.js";
 import './styles.scss';
 
 import useVisualMode from "hooks/useVisualMode";
@@ -39,20 +39,22 @@ export default function Appointment ({
   );
 
   function save(name, interviewer) {
+    if (interviewer !== null && name !== "") {
 
-    const interview = {
-      student: name,
-      interviewer
-    }
-    transition(SAVING);
+      const interview = {
+        student: name,
+        interviewer
+      }
+      transition(SAVING);
 
-    bookInterview(id, interview)
-    .then(() => {
-      transition(SHOW);
-    })
-    .catch(() =>{
-      transition(ERROR_SAVE, true)
-    })
+      bookInterview(id, interview)
+      .then(() => {
+        transition(SHOW);
+      })
+      .catch(() =>{
+        transition(ERROR_SAVE, true)
+      })
+    };
   };
 
 

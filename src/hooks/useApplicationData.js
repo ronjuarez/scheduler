@@ -61,7 +61,7 @@ export default function useApplicationData() {
           days : spotsRemaining(state, appointments)
         })
       })
-    }
+    };
 
     function cancelInterview(id) {    
       const appointment = {
@@ -80,7 +80,7 @@ export default function useApplicationData() {
           appointments,
           days : spotsRemaining(state, appointments)
         })
-       })
+      })
     };
 
   const setDay = day => setState({ ...state, day });
@@ -108,3 +108,4 @@ export default function useApplicationData() {
   return { state, setDay, bookInterview, cancelInterview }
 
 }
+
