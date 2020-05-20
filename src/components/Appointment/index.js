@@ -23,7 +23,9 @@ const EDIT = "EDIT";
 const ERROR_DELETE = "ERROR_DELETE";
 const ERROR_SAVE = "ERROR_SAVE";
 
-
+// This component is the centerpiece of the app. It features an appointment with multiple viuews that
+// update dynamically depending on user input. This is accomplished using a customhook that leverages
+// of the react setState hook.
 
 export default function Appointment ({
   time,
@@ -34,10 +36,14 @@ export default function Appointment ({
   interviewers
 }) {
 
+  // This is our custom hook which features 3 functions. Mode is a variable that is assigned by 
+  // transition and it determines  which view the user sees. Back is a function that allows a user
+  // to go back to a previous view.
   const { mode, transition, back } = useVisualMode(
     interview ? SHOW : EMPTY
   );
 
+  // This function works with bookInterview to .PUT data in our database,
   function save(name, interviewer) {
 
     const interview = {
@@ -55,7 +61,7 @@ export default function Appointment ({
     })
   };
 
-
+// This function works with cancelInterview to .DELETE data from our DB.
   function del() {
     transition(DELETING, true);
     
@@ -67,7 +73,7 @@ export default function Appointment ({
       transition(ERROR_DELETE, true)
     })
   }
-
+// We manage our component views using our useVisualMode hook and functions.
   return (
     <article className="appointment">
       <Header time={time} 
