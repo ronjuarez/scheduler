@@ -13,7 +13,8 @@ export default function Form({
   onCancel,
 
 }) {
-
+// We set the default state values as empty and null for the two fields that we use to create
+// our appointments. Using the || operator allows uus to reuses this view for Edit mode. 
   const [nameState, setName] = useState(name || "");
   const [intState, setInterviewer] = useState(interviewer || null);       
   const [errState, setError] = useState("")
@@ -39,7 +40,7 @@ export default function Form({
     onSave(nameState, intState)
   }
 
-  
+// We use onChange event listeners to change nameState and intState using thier partner functions.
 
   return (
     <main className="appointment__card appointment__card--create">

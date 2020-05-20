@@ -13,16 +13,20 @@ export default function DayListItem({
       'day-list__item--selected': selected,
       'day-list__item--full': spots === 0,
    })
-   const formatSpots = (spot) => {
+
+// This function takes in the spots available and formats the string that appears beside it to 
+// be gramatically correct.
+   const formatSpots = (spots) => {
     const pluralResult = "spots remaining"
     const result = "spot remaining"
-    if (spot === 0) {
+    if (spots === 0) {
       return `no ${pluralResult}`
     } 
-    return spot === 1 ?  `${spot} ${result}` : `${spot} ${pluralResult}`
+    return spots === 1 ?  `${spots} ${result}` : `${spots} ${pluralResult}`
   }
   return (
     <li
+    // These items need keys in order for react to render our app without warnings.
       key={id} 
       onClick={() => {setDay(name)}}
       data-testid="day"
