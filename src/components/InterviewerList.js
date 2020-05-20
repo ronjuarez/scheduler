@@ -15,7 +15,8 @@ export default function InterviewerList ({
       name={intItem.name}
       avatar={intItem.avatar}
       selected={intItem.id === interviewer}
-      setInterviewer={(event) => setInterviewer(intItem.id)}
+    // Here we wrap setInterviewedr in an anon function direct our prop to use setInterviewer as a function.      
+      setInterviewer={() => setInterviewer(intItem.id)}
     />
   ))
     return (

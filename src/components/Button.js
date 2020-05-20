@@ -1,8 +1,13 @@
 import React from "react";
+
+// This project introduced the classnames library. This is a library used to assign classNames to
+// different elements.
 import classNames from 'classnames';
 import "components/Button.scss";
 
 
+
+// Throughout this project we imported props into the component by pre-desctructoring 
 
 export default function Button({ 
    confirm, 
@@ -11,6 +16,8 @@ export default function Button({
    disabled, 
    children, 
 }) {
+
+// classNames uses the props danger and confirm to define button styling. 
    const buttonClass = classNames({
       button: true,
       'button--confirm': confirm,
