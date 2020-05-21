@@ -95,6 +95,7 @@ export default function Application(props) {
       {/* This is where we display our schedule*/}
       <section className="schedule">
         {schedule}
+        <Appointment key="last" time="5pm" />
       </section>
     </main>
   );
