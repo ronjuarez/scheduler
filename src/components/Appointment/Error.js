@@ -13,7 +13,7 @@ export default function Error ({
           <h3 className="text--light">{message}</h3>
         </section>
         <img
-          onClick={() => onClose()}
+          onClick={onClose}
           className="appointment__error-close"
           src="images/close.png"
           alt="Close"
