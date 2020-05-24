@@ -31,8 +31,8 @@ export default function DayListItem({
       onClick={() => {setDay(name)}}
       data-testid="day"
       className={dayClass}>
-      <h2 className="text--regular">{ name }</h2> 
-      <h3 className="text--light">{ formatSpots(spots) }</h3>
+      <h2 className="day-name--regular">{ name }</h2> 
+      <h3 className="day-name--light">{ formatSpots(spots) }</h3>
     </li>
   );
 }

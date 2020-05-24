@@ -5,7 +5,7 @@
   &__item {
     @include fade;
 
-    color: #8395a7;
+    color: #ffffff;
     height: 5rem;
     padding-left: 2rem;
     display: flex;
@@ -13,9 +13,9 @@
     justify-content: center;
 
     &:hover {
-      background-color: #ee5253;
+      background-color: white;
       cursor: pointer;
-      color: $dark-background;
+      color: rgb(88, 88, 88);
     }
 
     &--selected {
@@ -28,8 +28,19 @@
     }
 
     &--full {
-      opacity: $inactive-opacity;
-      color: blue;
+      color: grey;
+      font-weight: 500;
     }
+  }
+}
+
+.day-name {
+  &--regular {
+    color: rgb(88, 88, 88);
+    font-weight: 500;
+  }
+
+  &--light {
+    font-weight: 500;
   }
 }
