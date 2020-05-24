@@ -107,7 +107,7 @@ export default function Appointment ({
         /> }
       {mode === EDIT && 
         <Form
-          name={interview.student}
+          name={interview.student} // The correct prop name is name not student.
           interviewer={interview.interviewer.id}
           interviewers={interviewers}
           onSave={save}

@@ -4,7 +4,7 @@ import React from "react";
 
 
 export default function Show ({
-  student,
+  name, // Added the correct name.
   interviewer,
   onEdit,
   onDelete
@@ -12,7 +12,8 @@ export default function Show ({
     return(
     <main className="appointment__card appointment__card--show">
       <section className="appointment__card-left">
-        <h2 className="text--regular">{student}</h2>
+        {/* Added the correct prop name */}
+        <h2 className="text--regular">{name}</h2> 
         <section className="interviewer">
           <h4 className="text--light">interviewer</h4>
           <h3 className="text--regular">{interviewer.name}</h3>
