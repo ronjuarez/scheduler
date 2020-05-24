@@ -103,6 +103,10 @@ export default function useApplicationData() {
   // in an array response which we assign the variable name dbList in our .then(). We use the 
   // respones to set the values of our states. We also assign our default state to ...prev and 
   // we use state as a dependancy in our hook.
+  //
+  // EDIT: Putting state through as a dependancy cuases an infinite loop. We placed it there initially
+  // becuase we had an error message saying we should do so.
+
   useEffect(() => {
     Promise.all([
     axios({
@@ -121,7 +125,7 @@ export default function useApplicationData() {
       .catch((error) => {
         console.log(error)
       })
-  }, [state]);
+  }, []);
 
   return { state, setDay, bookInterview, cancelInterview }
 

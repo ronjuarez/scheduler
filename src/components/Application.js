@@ -1,6 +1,6 @@
 
 
-//this assignment was written almost entirely in ES6 syntax which was a welcome change
+//this assignment was written almost entirely in JSX and ES6 syntax which was a welcome change
 
 
 // this is the first project we have ever done using REACT library. 
