@@ -112,12 +112,12 @@ export default function useApplicationData() {
     axios({
       method: "GET",
       url: `http://localhost:8001/api/days`}),
-        axios({
-          method: "GET",
-          url: 'http://localhost:8001/api/appointments'}),
-          axios({
-            method: "GET",
-            url: `http://localhost:8001/api/interviewers`}),
+    axios({
+      method: "GET",
+      url: 'http://localhost:8001/api/appointments'}),
+    axios({
+      method: "GET",
+      url: `http://localhost:8001/api/interviewers`}),
     ])
       .then((dbList) => {
         setState(prev => ({...prev, days: dbList[0].data, appointments: dbList[1].data, interviewers: dbList[2].data}))
