@@ -36,6 +36,11 @@ export default function Form({
       return;
     }
 
+    if (intState === null) {
+      setError("Please select an interviewer!")
+      return;
+    }
+
     setError("");
     onSave(nameState, intState)
   }
