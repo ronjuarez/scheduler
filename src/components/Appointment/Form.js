@@ -11,7 +11,6 @@ export default function Form({
   interviewer,
   onSave,
   onCancel,
-
 }) {
 // We set the default state values as empty and null for the two fields that we use to create
 // our appointments. Using the || operator allows uus to reuses this view for Edit mode. 
