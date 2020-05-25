@@ -12,8 +12,7 @@
 //    b) It then takes the array stored in the appointments property and mutates each item of
 //    our appointments into individual arrays and stores them in the appointments property of 
 //    our state.
-//
-//    b) Else return an empty array.
+//    c) Else return an empty array.
 //
 // 3  We store the value that is returned in this condition as the value of variable sortedApp and return it as
 //    the final value of getAppointmentsForDay.
