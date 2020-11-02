@@ -34,4 +34,8 @@ Scheduler is a single-page app, built with REACT, that allows users to build a s
 
 ## On LOAD you will see an app containing a list of days with with 5 available appointment slots from between the hours of 12pm - 5pm. You can update each individual appointment and either changing the interviewer or the name of the appointment maker. You can also delete an appointment, whenevcr you do it updates the number of spots left for that day dynamically.
 
+![First Screen](https://github.com/ronjuarez/LHL-Mar30Cohort-scheduler/blob/master/scheduler-gifs/updateanddeleteappointments.gif)
+
 ## You can also schedule an appointment, if there are no spots available it is reflected in the styling and formatting of the daylist component.
+
+![Second Screen](https://github.com/ronjuarez/LHL-Mar30Cohort-scheduler/blob/master/scheduler-gifs/createappointmentsnospotsleft.gif)
