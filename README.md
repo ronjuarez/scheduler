@@ -7,7 +7,6 @@ Scheduler is a single-page app, built with REACT, that allows users to build a s
 ## Front-End Tech Stack
 
 * ReactJS 
-* ClassNames
 * Axios
 
 ## Back-End Tech Stack
